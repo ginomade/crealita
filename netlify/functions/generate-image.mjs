@@ -1,7 +1,7 @@
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 exports.handler = async function(event, context) {
-  const OPENAI_API_KEY = Netlify.env.get("OPENAI_API_KEY");
+  const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
   const { prompt } = JSON.parse(event.body || '{}');
 
   if (!prompt) {
